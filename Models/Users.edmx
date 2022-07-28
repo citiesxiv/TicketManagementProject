@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MainDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MainDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Events">
           <Key>
             <PropertyRef Name="Id" />
@@ -17,6 +17,7 @@
           <Property Name="Address" Type="nvarchar" MaxLength="70" />
           <Property Name="City" Type="nvarchar" MaxLength="50" />
           <Property Name="VenueCapacity" Type="int" />
+          <Property Name="EventImg" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Purchases">
           <Key>
@@ -77,8 +78,7 @@
             <End Role="Purchases" EntitySet="Purchases" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MainDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -95,6 +95,7 @@
           <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="VenueCapacity" Type="Int32" />
           <NavigationProperty Name="Purchases" Relationship="Self.FK_Purchase_EventID_Events_ID" FromRole="Events" ToRole="Purchases" />
+          <Property Name="EventImg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Purchase">
           <Key>
@@ -167,6 +168,7 @@
           <EntitySetMapping Name="Events">
             <EntityTypeMapping TypeName="MainDBModel.Event">
               <MappingFragment StoreEntitySet="Events">
+                <ScalarProperty Name="EventImg" ColumnName="EventImg" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
