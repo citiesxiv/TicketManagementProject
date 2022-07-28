@@ -10,6 +10,8 @@ namespace TicketManagementProject.Controllers
     {
         public ActionResult Index()
         {
+           
+            
             return View();
         }
 
