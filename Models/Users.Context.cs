@@ -7,9 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using TicketManagementProject.Models;
-
-namespace TicketManagementProject
+namespace TicketManagementProject.Models
 {
     using System;
     using System.Data.Entity;

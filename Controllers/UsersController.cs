@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TicketManagementProject.Models;
 
 namespace TicketManagementProject.Controllers
 {
@@ -33,6 +34,12 @@ namespace TicketManagementProject.Controllers
             try
             {
                 // TODO: Add insert logic here
+                User user = new User();
+                MainDBEntities userContext = new MainDBEntities();
+
+              
+
+                
 
                 return RedirectToAction("Index");
             }

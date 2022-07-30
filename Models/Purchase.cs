@@ -12,7 +12,7 @@ namespace TicketManagementProject.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Purchase
+    public class Purchase
     {
         public int Id { get; set; }
         public int UserId { get; set; }
