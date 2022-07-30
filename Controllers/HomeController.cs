@@ -27,5 +27,10 @@ namespace TicketManagementProject.Controllers
 
             return View();
         }
+
+        public ActionResult RegisterEventIns()
+        {
+            return View();
+        }
     }
 }
