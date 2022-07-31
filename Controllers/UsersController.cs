@@ -1,17 +1,20 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TicketManagementProject.Models;
 
+
 namespace TicketManagementProject.Controllers
 {
     public class UsersController : Controller
     {
+        private MainDBEntities db = new MainDBEntities();
         // GET: Users
         public ActionResult Index()
         {
+
             return View();
         }
 
@@ -29,19 +32,26 @@ namespace TicketManagementProject.Controllers
 
         // POST: Users/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(User user)
         {
-            try
-            {
-                // TODO: Add insert logic here
+            
+                // 
+                if (ModelState.IsValid)
+                {
+                    db.Users.Add(user);
+                    db.SaveChanges();
+                    return RedirectToAction("Index","Events");
+                }
+                else
+                {
+                    ViewBag.error = "Please Leave no fields blank.";
+                    return RedirectToAction("Create");
+                }
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+                
         }
+           
+        
 
         // GET: Users/Edit/5
         public ActionResult Edit(int id)

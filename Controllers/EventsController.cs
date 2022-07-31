@@ -115,6 +115,35 @@ namespace TicketManagementProject.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        //GET for Book Ticket
+        public ActionResult BookTicket(int eventId, int userId)
+        {
+            var context = new MainDBEntities();
+            Event eve = context.Events.Single(e => e.Id == eventId);
+
+            ViewBag.Event = eventId;
+            ViewBag.EventName = eve.Name;
+            ViewBag.UserId = userId;
+            return View("BookTicket");
+        }
+
+        //POST for Book Ticket
+        [HttpPost]
+        public ActionResult BookTicket(FormCollection formCollection)
+        {
+            var ticket = new Purchase();
+            var context = new MainDBEntities();
+
+            ticket.EventId = Convert.ToInt32(formCollection["EventId"]);
+            ticket.UserId = Convert.ToInt32(formCollection["UserId"]);
+            ticket.PurchaseDate = Convert.ToDateTime(formCollection["PurchaseDate"]);
+            ticket.Quantity = Convert.ToInt32(formCollection["Quantity"]);
+
+            context.Purchases.Add(ticket);
+            context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
 
         protected override void Dispose(bool disposing)
         {

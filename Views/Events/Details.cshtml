@@ -57,3 +57,10 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+<p>
+    @*UserId is set for 2 initially because I have user with Id 2 on my database -Chanju
+       We can change it using Session or Cookie later*@
+
+    @Html.ActionLink("Book Ticket", "BookTicket", new { eventId = Model.Id, userId = 2 }, null)
+</p>

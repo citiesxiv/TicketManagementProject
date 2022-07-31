@@ -24,11 +24,16 @@
                    <h5 class="card-title" style="font-weight: 800;">@item.Name</h5>
                    <p>$@item.TicketPrice</p>
                    <p class="card-text">@item.Description</p>
+
                    @Html.ActionLink("View Event", "Details", new { id = item.Id }, new { @class = "btn btn-primary eventBtn" })
                    <br />
 
                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+
+                   @*@<a href="#" class="btn btn-primary" style="margin-bottom: 1.5em;">View Detail</a>*@
+                   @Html.ActionLink("View Event Details", "Details", new { id = item.Id }, null)
+
                </div>
            </div>
         }
