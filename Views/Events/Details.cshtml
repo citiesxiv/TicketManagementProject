@@ -4,70 +4,55 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Event Details</h2>
+<hr />
 
 <div>
-    <h4>Event</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+    <div style="display: flex; align-content: center;">
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+        <div style="width: 40%; border-radius: 3em; overflow:hidden;">
+            <img src="@Model.EventImg" style="width: 100%;"/>
+        </div>
+        
+        <div style="margin-left: 5em; width: 40%;">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+            <h1 style="font-weight: 900;">@Model.Name</h1>
+            <p>@Model.Description</p>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+            <b style="color: mediumseagreen; margin-right: 1em;">$@Model.TicketPrice</b>
+            @Html.ActionLink("Buy Ticket Now", "Details", new { id = Model.Id }, new { @class = "btn btn-success eventBtn" })
+            
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TicketPrice)
-        </dt>
+            <h3 style="font-weight: 700;">Details</h3>
+            <table width="100%">
+                <tr>
+                    <td>Date:</td>
+                    <td>@Model.EventDate</td>
+                </tr>
+                <tr>
+                    <td>Address:</td>
+                    <td>@Model.Address</td>
+                </tr>
+                <tr>
+                    <td>City</td>
+                    <td>@Model.City</td>
+                </tr>
+                <tr>
+                    <td>Venue Capacity:</td>
+                    <td>@Model.VenueCapacity</td>
+                </tr>
+            </table>
 
-        <dd>
-            @Html.DisplayFor(model => model.TicketPrice)
-        </dd>
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EventDate)
-        </dt>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.EventDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.City)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.City)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.VenueCapacity)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.VenueCapacity)
-        </dd>
-
-    </dl>
+    
 </div>
+
+<br />
+<br />
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")

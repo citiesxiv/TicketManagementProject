@@ -4,7 +4,6 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -22,10 +21,14 @@
                     <img src="@item.EventImg" class="card-img-top" alt="@item.Name" style="width: 100%;">
                </div>
                <div class="card-body" style="padding: 1em;">
-                   <h5 class="card-title"style="font-weight: 800;">@item.Name</h5>
+                   <h5 class="card-title" style="font-weight: 800;">@item.Name</h5>
                    <p>$@item.TicketPrice</p>
                    <p class="card-text">@item.Description</p>
-                   <a href="#" class="btn btn-primary" style="margin-bottom: 1.5em;">View Event</a>
+                   @Html.ActionLink("View Event", "Details", new { id = item.Id }, new { @class = "btn btn-primary eventBtn" })
+                   <br />
+
+                   @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                   @Html.ActionLink("Delete", "Delete", new { id = item.Id })
                </div>
            </div>
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TicketManagementProject.Models;
 
 namespace TicketManagementProject.Controllers
 {
@@ -50,11 +51,14 @@ namespace TicketManagementProject.Controllers
 
         // POST: Users/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, Event events)
         {
             try
             {
-                // TODO: Add update logic here
+                // TODO: Add update logic hereI'm
+                MainDBEntities dbEntities = new MainDBEntities();
+                dbEntities.Entry(events).State = System.Data.Entity.EntityState.Modified;
+                dbEntities.SaveChanges();
 
                 return RedirectToAction("Index");
             }
