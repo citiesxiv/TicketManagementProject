@@ -20,8 +20,9 @@
             <p>@Model.Description</p>
 
             <b style="color: mediumseagreen; margin-right: 1em;">$@Model.TicketPrice</b>
-            @Html.ActionLink("Buy Ticket Now", "Details", new { id = Model.Id }, new { @class = "btn btn-success eventBtn" })
-            
+            @Html.ActionLink("Book Ticket", "BookTicket", new { eventId = Model.Id, userId = 2 }, new { @class = "btn btn-success eventBtn" })
+
+
 
             <h3 style="font-weight: 700;">Details</h3>
             <table width="100%">
@@ -56,11 +57,4 @@
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
-</p>
-
-<p>
-    @*UserId is set for 2 initially because I have user with Id 2 on my database -Chanju
-       We can change it using Session or Cookie later*@
-
-    @Html.ActionLink("Book Ticket", "BookTicket", new { eventId = Model.Id, userId = 2 }, null)
 </p>
