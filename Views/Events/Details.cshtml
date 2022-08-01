@@ -19,12 +19,23 @@
             <h1 style="font-weight: 900;">@Model.Name</h1>
             <p>@Model.Description</p>
 
-            <b style="color: mediumseagreen; margin-right: 1em;">$@Model.TicketPrice</b>
+            <b style="color: mediumseagreen; margin-right: 1em;">
+
+                @if (Model.TicketPrice == 0)
+                {
+                    <b>Free</b>
+                }
+                else
+                {
+                    <b>$@Model.TicketPrice</b>
+                }
+
+            </b>
             @Html.ActionLink("Book Ticket", "BookTicket", new { eventId = Model.Id, userId = 2 }, new { @class = "btn btn-success eventBtn" })
 
 
 
-            <h3 style="font-weight: 700;">Details</h3>
+            <h3 style="font-weight: 700; margin-top: 2em;">Details</h3>
             <table width="100%">
                 <tr>
                     <td>Date:</td>

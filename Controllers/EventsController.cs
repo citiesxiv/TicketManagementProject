@@ -21,6 +21,20 @@ namespace TicketManagementProject.Controllers
             return View(db.Events.ToList());
         }
 
+        // POST for searching Event
+        [HttpPost]
+        public ActionResult Index(string eventName)
+        {
+
+            string searchQuery = "%" + eventName + "%";
+
+            MainDBEntities context = new MainDBEntities();
+            var events = context.Events.Where(e => e.Name.Contains(eventName)).ToList();
+
+
+            return View(events);
+        }
+
         // GET: Events/Details/5
         public ActionResult Details(int? id)
         {
@@ -144,6 +158,8 @@ namespace TicketManagementProject.Controllers
 
             return RedirectToAction("Index");
         }
+
+       
 
         protected override void Dispose(bool disposing)
         {
