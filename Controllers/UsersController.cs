@@ -14,8 +14,19 @@ namespace TicketManagementProject.Controllers
         // GET: Users
         public ActionResult Index()
         {
+            var users = db.Users.ToList();
+            return View(users);
+        }
 
-            return View();
+        [HttpPost]
+        public ActionResult Index(string userName)
+        {
+            string searchQuery = "%" + userName + "%";
+
+            MainDBEntities context = new MainDBEntities();
+            var users = context.Users.Where(e => e.Name.Contains(userName)).ToList();
+
+            return View(users);
         }
 
         // GET: Users/Details/5
