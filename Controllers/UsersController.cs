@@ -22,9 +22,8 @@ namespace TicketManagementProject.Controllers
         public ActionResult Index(string userName)
         {
             string searchQuery = "%" + userName + "%";
+            var users = db.Users.Where(e => e.Name.Contains(userName)).ToList();
 
-            MainDBEntities context = new MainDBEntities();
-            var users = context.Users.Where(e => e.Name.Contains(userName)).ToList();
 
             return View(users);
         }
@@ -59,7 +58,39 @@ namespace TicketManagementProject.Controllers
                     return RedirectToAction("Create");
                 }
 
+               
+        }
+           
+        
+        // GET: Users/Login
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        // POST: Users/Login
+        [HttpPost]
+        public ActionResult Login(FormCollection loginDetails)
+        {
+            string email = loginDetails["email"];
+            string password = loginDetails["password"];
+
+            var user = db.Users.First(x => (x.Email == email) && (x.Password == password));
+
+            if(user != null)
+            {
+                Session["id"] = user.Id;
+                Session["name"] = user.Name;
+                Session["email"] = user.Email;
+                Session["address"] = user.Address;
+                Session["isHost"] = user.isHost;
+                Session["phoneNumber"] = user.PhoneNumber;
+                return RedirectToAction("Index", "Home");
                 
+            }
+
+            return View();
+
         }
            
         
@@ -88,6 +119,8 @@ namespace TicketManagementProject.Controllers
                 return View();
             }
         }
+
+
 
         // GET: Users/Delete/5
         public ActionResult Delete(int id)

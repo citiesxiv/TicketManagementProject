@@ -31,7 +31,8 @@ namespace TicketManagementProject.Models
         [Required]
         public string Address { get; set; }
         public bool isHost { get; set; }
-        [Required, RegularExpression(@"^(?=[^\d_].*?\d)\w(\w|[!@#$%]){7,20}",ErrorMessage = "Password must be 7-20characters.\nPassword can contain special characters(!@#$%). Password must start with a letter. \n " + "Password must contain 1 number."),]
+        [Required, RegularExpression(@"^(?=[^\d_].*?\d)\w(\w|[!@#$%]){7,50}",ErrorMessage = "Password must be 7-50characters.\nPassword can contain special characters(!@#$%). Password must start with a letter. \n " + "Password must contain 1 number."),]
+
         public string Password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
