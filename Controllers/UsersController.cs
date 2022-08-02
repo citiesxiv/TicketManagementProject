@@ -1,17 +1,31 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TicketManagementProject.Models;
+
 
 namespace TicketManagementProject.Controllers
 {
     public class UsersController : Controller
     {
+        private MainDBEntities db = new MainDBEntities();
         // GET: Users
         public ActionResult Index()
         {
-            return View();
+            var users = db.Users.ToList();
+            return View(users);
+        }
+
+        [HttpPost]
+        public ActionResult Index(string userName)
+        {
+            string searchQuery = "%" + userName + "%";
+
+            var users = db.Users.Where(e => e.Name.Contains(userName)).ToList();
+
+            return View(users);
         }
 
         // GET: Users/Details/5
@@ -28,18 +42,54 @@ namespace TicketManagementProject.Controllers
 
         // POST: Users/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(User user)
         {
-            try
-            {
-                // TODO: Add insert logic here
+            
+                // 
+                if (ModelState.IsValid)
+                {
+                    db.Users.Add(user);
+                    db.SaveChanges();
+                    return RedirectToAction("Index","Events");
+                }
+                else
+                {
+                    ViewBag.error = "Please Leave no fields blank.";
+                    return RedirectToAction("Create");
+                }
 
-                return RedirectToAction("Index");
-            }
-            catch
+                
+        }
+           
+        
+        // GET: Users/Login
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        // POST: Users/Login
+        [HttpPost]
+        public ActionResult Login(FormCollection loginDetails)
+        {
+            string email = loginDetails["email"];
+            string password = loginDetails["password"];
+
+            var user = db.Users.First(x => (x.Email == email) && (x.Password == password));
+
+            if(user != null)
             {
-                return View();
+                Session["id"] = user.Id;
+                Session["name"] = user.Name;
+                Session["email"] = user.Email;
+                Session["address"] = user.Address;
+                Session["isHost"] = user.isHost;
+                Session["phoneNumber"] = user.PhoneNumber;
+                return RedirectToAction("Index", "Home");
+                
             }
+
+            return View();
         }
 
         // GET: Users/Edit/5
@@ -50,11 +100,14 @@ namespace TicketManagementProject.Controllers
 
         // POST: Users/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, Event events)
         {
             try
             {
-                // TODO: Add update logic here
+                // TODO: Add update logic hereI'm
+                MainDBEntities dbEntities = new MainDBEntities();
+                dbEntities.Entry(events).State = System.Data.Entity.EntityState.Modified;
+                dbEntities.SaveChanges();
 
                 return RedirectToAction("Index");
             }
@@ -63,6 +116,8 @@ namespace TicketManagementProject.Controllers
                 return View();
             }
         }
+
+
 
         // GET: Users/Delete/5
         public ActionResult Delete(int id)

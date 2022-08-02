@@ -3,12 +3,24 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Ticket Management System</title>
+    <link rel="icon" type="image/x-icon" href="~/Images/ASP-Logo-bgRemoved.png">
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <style>
+        footer a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .loginTable td {
+            margin-right: 2em;
+        }
+    </style>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #2D3047; color: white !important; margin-bottom: 2em !important;">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -16,13 +28,24 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                
+                <div style="display: flex;">
+                    <div style="width: 5em;">
+                        <a href="/Home">
+                            <img src="~/Images/ASP-Logo-bgRemoved.png" style="width: 100%;"/>
+                        </a>
+                    </div>
+                    <div style="font-weight: 600;">
+                        @Html.ActionLink("TicketBoss", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    </div>
+                </div>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Event", "Index", "Events")</li>
+                    <li>@Html.ActionLink("Register", "Create", "Users")</li>
+                    <li>@Html.ActionLink("Admin", "Index", "Users")</li>
                 </ul>
             </div>
         </div>
@@ -30,10 +53,29 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+
     </div>
+    <footer style="background: #2D3047; color: white; padding: 3em 5em; margin-bottom: -10em;  width: 100%; display: flex; justify-content: space-between;">
+
+        <div>
+            <ul style="list-style: none;">
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>@Html.ActionLink("Event", "Index", "Events")</li>
+                <li>@Html.ActionLink("Register", "Create", "Users")</li>
+                <li>@Html.ActionLink("Admin", "Index", "Users")</li>
+            </ul>
+        </div>
+
+        <div>
+            <p>Anthony Bonasso</p>
+            <p>Chanju Kang</p>
+            <p>Lucky Osunbiyi</p>
+        </div>
+        
+        <div>
+            <p>&copy; @DateTime.Now.Year - TicketBoss</p>
+        </div>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
