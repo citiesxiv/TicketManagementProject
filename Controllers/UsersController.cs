@@ -22,8 +22,8 @@ namespace TicketManagementProject.Controllers
         public ActionResult Index(string userName)
         {
             string searchQuery = "%" + userName + "%";
-
             var users = db.Users.Where(e => e.Name.Contains(userName)).ToList();
+
 
             return View(users);
         }
@@ -58,7 +58,7 @@ namespace TicketManagementProject.Controllers
                     return RedirectToAction("Create");
                 }
 
-                
+               
         }
            
         
@@ -90,7 +90,10 @@ namespace TicketManagementProject.Controllers
             }
 
             return View();
+
         }
+           
+        
 
         // GET: Users/Edit/5
         public ActionResult Edit(int id)

@@ -1,0 +1,141 @@
+﻿@model IEnumerable<TicketManagementProject.Models.Event>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+<br />
+
+<form action="Events/Index" method="POST" style="margin-bottom: 2em; margin-left: 1em;">
+    <input type="text" name="eventName" style="border-radius: 0.5em; border: 1px solid #ccc; padding: 0.7em; width: 100%;" />
+    <input type="submit" value="Search Event" style="border: none; background: #24a0ed; color: white; padding: 0.7em 2em; border-radius: 0.5em; margin-left: 1em;"/>
+</form>
+
+
+<div class="container text-center">
+
+
+
+    <div style="display: flex; justify-content: space-between; flex-wrap: wrap; margin: 0 auto;">
+        @foreach (var item in Model)
+        {
+            <div class="card" style="width: 22em; overflow: hidden; border-radius: 1em; margin-bottom: 1.5em; box-shadow: 0px 10px 25px rgb(0,0,0,0.1);">
+                <div style="height: 10em; overflow:  hidden;">
+                    <img src="@item.EventImg" class="card-img-top" alt="@item.Name" style="width: 100%;">
+                </div>
+                <div class="card-body" style="padding: 1em;">
+                    <h5 class="card-title" style="font-weight: 800;">@item.Name</h5>
+
+                    @if (item.TicketPrice == 0)
+                    {
+                        <p> Free </p>
+                    } else
+                    {
+                        <p> $@item.TicketPrice </p>
+                    }
+                       
+                        <p class="card-text">@item.Description</p>
+
+                        @Html.ActionLink("View Event", "Details", new { id = item.Id }, new { @class = "btn btn-primary eventBtn" })
+                        <br />
+                        <br />
+
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+@Html.ActionLink("Delete", "Delete", new { id = item.Id })
+
+                </div>
+            </div>
+        }
+
+        <div class="card"
+             style="width: 30rem;
+                    overflow: hidden;
+                    border-radius: 1em;
+                    margin-bottom: 1.5em;
+                    box-shadow: 0px 10px 25px rgb(0,0,0,0.1);
+                    display: flex !important;
+                    justify-content: center !important;
+                    align-content: center !important;
+                    background-color: #24a0ed;
+                    color: white !important;">
+
+            <div style="color:white; margin: auto; font-weight: 700; font-size: 1.5em; padding: 4em;">
+                <h1 style="font-weight: 900;">+</h1>
+                @Html.ActionLink("Create New Event", "Create", null, null, new { @style = "color:white;" })
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+</div>
+
+@*
+
+
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TicketPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VenueCapacity)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventDate.ToString().)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VenueCapacity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventImg)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+    </table>
+*@
