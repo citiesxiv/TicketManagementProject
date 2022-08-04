@@ -1,7 +1,38 @@
-﻿
+
+﻿@model TicketManagementProject.Models.User
+
+
 @{
     ViewBag.Title = "Profile";
 }
 
-<h2>Profile</h2>
+
+<br />
+
+<h2>User Profile</h2>
+
+<hr />
+
+<div class="container" style="margin-bottom: 6.3em;">
+
+    <h1 style="font-weight: 900;">@Model.Name</h1>
+
+    <table width="50%">
+        <tr>
+            <td>Address:</td>
+            <td>@Model.Address</td>
+        </tr>
+        <tr>
+            <td>Phone Number:</td>
+            <td>@Model.PhoneNumber</td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td>@Model.Email</td>
+        </tr>
+        
+    </table>
+</div>
+
+
 

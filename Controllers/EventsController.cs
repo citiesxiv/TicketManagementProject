@@ -132,13 +132,19 @@ namespace TicketManagementProject.Controllers
         //GET for Book Ticket
         public ActionResult BookTicket(int eventId, int userId)
         {
-            var context = new MainDBEntities();
-            Event eve = context.Events.Single(e => e.Id == eventId);
+            if (Session["id"] != null)
+            {
 
-            ViewBag.Event = eventId;
-            ViewBag.EventName = eve.Name;
-            ViewBag.UserId = userId;
-            return View("BookTicket");
+                var context = new MainDBEntities();
+                Event eve = context.Events.Single(e => e.Id == eventId);
+
+                ViewBag.Event = eventId;
+                ViewBag.EventName = eve.Name;
+                ViewBag.UserId = userId;
+                return View("BookTicket");
+            }
+
+            return RedirectToAction("Login", "Users");
         }
 
         //POST for Book Ticket

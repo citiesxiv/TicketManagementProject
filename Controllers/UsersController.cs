@@ -50,7 +50,15 @@ namespace TicketManagementProject.Controllers
                 {
                     db.Users.Add(user);
                     db.SaveChanges();
-                    return RedirectToAction("Index","Events");
+
+                    Session["id"] = user.Id;
+                    Session["name"] = user.Name;
+                    Session["email"] = user.Email;
+                    Session["address"] = user.Address;
+                    Session["isHost"] = user.isHost;
+                    Session["phoneNumber"] = user.PhoneNumber;
+
+                    return RedirectToAction("Index","Home");
                 }
                 else
                 {
@@ -75,22 +83,37 @@ namespace TicketManagementProject.Controllers
             string email = loginDetails["email"];
             string password = loginDetails["password"];
 
-            var user = db.Users.First(x => (x.Email == email) && (x.Password == password));
-
-            if(user != null)
+            try
             {
-                Session["id"] = user.Id;
-                Session["name"] = user.Name;
-                Session["email"] = user.Email;
-                Session["address"] = user.Address;
-                Session["isHost"] = user.isHost;
-                Session["phoneNumber"] = user.PhoneNumber;
-                return RedirectToAction("Index", "Home");
+
+                var user = db.Users.First(x => (x.Email == email) && (x.Password == password));
+
+                if(user != null)
+                {
+                    Session["id"] = user.Id;
+                    Session["name"] = user.Name;
+                    Session["email"] = user.Email;
+                    Session["address"] = user.Address;
+                    Session["isHost"] = user.isHost;
+                    Session["phoneNumber"] = user.PhoneNumber;
+                    return RedirectToAction("Index", "Home");
                 
+                }
+
+            } catch
+            {
+                return View("Login");
             }
 
             return View();
 
+        }
+
+        [HttpGet]
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+            return RedirectToAction("Index", "Home");
         }
            
         
@@ -142,6 +165,19 @@ namespace TicketManagementProject.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult Profile()
+        {
+            if (Session["id"] != null)
+            {
+                var userId = Convert.ToInt32(Session["id"].ToString());
+                var user = db.Users.First(x => x.Id == userId);
+
+                return View(user);
+            }
+               
+            return RedirectToAction("Login");
         }
     }
 }
