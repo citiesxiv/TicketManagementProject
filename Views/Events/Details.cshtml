@@ -31,7 +31,7 @@
                 }
 
             </b>
-            @Html.ActionLink("Book Ticket", "BookTicket", new { eventId = Model.Id, userId = 2 }, new { @class = "btn btn-success eventBtn" })
+            @Html.ActionLink("Book Ticket", "BookTicket", new { eventId = Model.Id, userId = Session["id"] }, new { @class = "btn btn-success eventBtn" })
 
 
 
