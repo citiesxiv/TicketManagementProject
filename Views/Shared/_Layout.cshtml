@@ -9,6 +9,7 @@
 
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
     <style>
         footer a {
             text-decoration: none;
@@ -50,6 +51,14 @@
                     <li>@Html.ActionLink("Event", "Index", "Events")</li>
                     <li>@Html.ActionLink("Register", "Create", "Users")</li>
                     <li>@Html.ActionLink("Admin", "Index", "Users")</li>
+                    @if (Session["id"] == null)
+                    {
+                        <li>@Html.ActionLink("Login", "Login", "Users")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Profile", "Profile", "Users")</li>
+                    }
                 </ul>
             </div>
         </div>
