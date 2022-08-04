@@ -27,6 +27,7 @@ namespace TicketManagementProject.Models
         [DisplayName("Event Name")]
         public string Name { get; set; }
         [DataType(DataType.MultilineText)]
+        [StringLength(200)]
         public string Description { get; set; }
         [DisplayName("Ticket Price")]
         public decimal TicketPrice { get; set; }

@@ -44,12 +44,36 @@
                 </div>
 
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+            <div class="navbar-collapse collapse" ">
+                <ul class="nav navbar-nav" >
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Event", "Index", "Events")</li>
                     <li>@Html.ActionLink("Register", "Create", "Users")</li>
-                    <li>@Html.ActionLink("Admin", "Index", "Users")</li>
+                    <li style="margin-right: auto;">@Html.ActionLink("Admin", "Index", "Users")</li>
+                    <li>
+                        <div style="margin-right: 1em; display: flex;  height: 100%">
+                            <a href="@Url.Action("Profile", "Users")" title="Profile Page" class="links">
+                                <img alt="Profile" src="@Url.Content("~/Images/pfp.png")" style="width: 3em; margin-left: 30em; margin-top: 1em;"/>
+                            </a>
+
+                            <div>
+                                @if (Session["id"] != null)
+                                    {
+                                        <div style="position: relative;  margin-left: 1em; color: white; ">
+                                            <h2 style="font-size: 15px; font-weight: 700; margin-bottom: -0.1em;">@Session["name"]</h2>
+                                            @Html.ActionLink("Logout", "Logout", "Users", null, new { @style = "color: white;" })
+                                        </div>
+                                    }
+                                else
+                                    {
+                                        <div style="position: relative; top: 20px;  margin-left: 1em; color: white; font-weight: 700;">
+                                            @Html.ActionLink("Login", "Login", "Users", null, new { @style = "color: white;" })
+                                        </div>
+                                    }
+                            </div>
+
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
