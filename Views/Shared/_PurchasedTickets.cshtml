@@ -1,0 +1,27 @@
+﻿@model IEnumerable<TicketManagementProject.Models.PurchaseViewModel>
+
+<table width="100%" class="purchaseTable">
+
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.events.Name)</th>
+        <th>@Html.DisplayNameFor(model => model.events.EventDate)</th>
+        <th>@Html.DisplayNameFor(model => model.purchase.PurchaseDate)</th>
+        <th>@Html.DisplayNameFor(model => model.purchase.Quantity)</th>
+
+    </tr>
+
+    @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.events.Name</td>
+                    <td>@item.events.EventDate</td>
+                    <td>@item.purchase.PurchaseDate</td>
+                    <td>@item.purchase.Quantity</td>
+                </tr>
+            }
+    
+
+
+
+</table>
+
