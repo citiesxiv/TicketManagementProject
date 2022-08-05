@@ -9,6 +9,7 @@
 
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
     <style>
         footer a {
             text-decoration: none;
@@ -49,6 +50,7 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Event", "Index", "Events")</li>
                     <li>@Html.ActionLink("Register", "Create", "Users")</li>
+
                     <li style="margin-right: auto;">@Html.ActionLink("Admin", "Index", "Users")</li>
                     <li>
                         <div style="margin-right: 1em; display: flex;  height: 100%">
@@ -74,6 +76,7 @@
 
                         </div>
                     </li>
+
                 </ul>
             </div>
         </div>
