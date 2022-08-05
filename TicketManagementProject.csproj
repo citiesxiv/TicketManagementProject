@@ -130,6 +130,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PurchasesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -140,6 +141,7 @@
     <Compile Include="Models\Purchase.cs">
       <DependentUpon>Users.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PurchaseViewModel.cs" />
     <Compile Include="Models\User.cs">
       <DependentUpon>Users.tt</DependentUpon>
     </Compile>
@@ -280,6 +282,8 @@
     <Content Include="Views\Users\Login.cshtml" />
     <Content Include="Views\Home\RegisterEventIns.cshtml" />
     <Content Include="Views\Users\Profile.cshtml" />
+    <Content Include="Views\Users\_PurchasedTickets.cshtml" />
+    <Content Include="Views\Shared\_PurchasedTickets.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

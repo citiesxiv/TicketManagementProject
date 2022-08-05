@@ -167,6 +167,7 @@ namespace TicketManagementProject.Controllers
             }
         }
 
+        // Get User's Profile
         public ActionResult Profile()
         {
             if (Session["id"] != null)
@@ -179,5 +180,11 @@ namespace TicketManagementProject.Controllers
                
             return RedirectToAction("Login");
         }
+
+
+        
+
+            
+        
     }
 }

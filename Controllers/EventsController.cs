@@ -155,7 +155,7 @@ namespace TicketManagementProject.Controllers
             var context = new MainDBEntities();
 
             ticket.EventId = Convert.ToInt32(formCollection["EventId"]);
-            ticket.UserId = Convert.ToInt32(formCollection["UserId"]);
+            ticket.UserId = Convert.ToInt32(Session["Id"].ToString());
             ticket.PurchaseDate = Convert.ToDateTime(formCollection["PurchaseDate"]);
             ticket.Quantity = Convert.ToInt32(formCollection["Quantity"]);
 
