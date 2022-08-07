@@ -18,7 +18,15 @@ namespace TicketManagementProject.Controllers
         // GET: Events
         public ActionResult Index()
         {
-            return View(db.Events.ToList());
+            if (Session["id"] != null)
+            {
+                return View(db.Events.ToList());
+            }
+            else
+            {
+                return RedirectToAction("Login", "Users");
+            }
+
         }
 
         // POST for searching Event
