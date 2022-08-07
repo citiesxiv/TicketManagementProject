@@ -51,34 +51,44 @@
                     <br />
                     <br />
 
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-
+                    @if (Session["isHost"].Equals(1))
+                    {
+                        <div>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </div>
+                    }else {
+                    }
                 </div>
             </div>
         }
 
-        <div class="card"
-             style="width: 30rem;
-                    overflow: hidden;
-                    border-radius: 1em;
-                    margin-bottom: 1.5em;
-                    box-shadow: 0px 10px 25px rgb(0,0,0,0.1);
-                    display: flex !important;
-                    justify-content: center !important;
-                    align-content: center !important;
-                    background-color: #24a0ed;
-                    color: white !important;">
+        @if (Session["isHost"].Equals(1))
+        {
+            <div class="card"
+                 style="width: 30rem;
+                            overflow: hidden;
+                            border-radius: 1em;
+                            margin-bottom: 1.5em;
+                            box-shadow: 0px 10px 25px rgb(0,0,0,0.1);
+                            display: flex !important;
+                            justify-content: center !important;
+                            align-content: center !important;
+                            background-color: #24a0ed;
+                            color: white !important;">
 
-            <div style="color:white; margin: auto; font-weight: 700; font-size: 1.5em; padding: 4em;">
-                <h1 style="font-weight: 900;">+</h1>
-                @Html.ActionLink("Create New Event", "Create", null, null, new { @style = "color:white;" })
+                <div style="color:white; margin: auto; font-weight: 700; font-size: 1.5em; padding: 4em;">
+                    <h1 style="font-weight: 900;">+</h1>
+                    @Html.ActionLink("Create New Event", "Create", null, null, new { @style = "color:white;" })
+                </div>
+
             </div>
+        }
+        else
+        {
+            
+        }
 
-        </div>
+        
     </div>
-</div>
-
-
-
 </div>

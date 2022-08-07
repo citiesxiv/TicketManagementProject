@@ -32,5 +32,10 @@ namespace TicketManagementProject.Controllers
         {
             return View();
         }
+
+        public ActionResult Admin()
+        {
+            return View();
+        }
     }
 }
