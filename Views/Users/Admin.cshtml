@@ -1,0 +1,119 @@
+﻿@model IEnumerable<TicketManagementProject.Models.User>
+
+@{
+    ViewBag.Title = "Admin";
+}
+
+<h2>Admin</h2>
+
+@if (ViewBag.SessionType != "Admin")
+{
+    <h3>This page is for Admin only. Please contact Admin or log in as an Admin account.</h3>
+}
+else
+{
+    <h3>Users</h3>
+    <table class="table">
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Phone</td>
+            <td>Email</td>
+            <td>Address</td>
+            <td>Type</td>
+            <td>Actions</td>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserType)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "Users", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", "Users", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </table>
+
+    <br />
+
+    <h3>Event List</h3>
+
+    <table class="table">
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Ticket Price</td>
+            <td>Event Date</td>
+            <td>Address</td>
+            <td>City</td>
+            <td>Venue Capacity</td>
+            <td>Action</td>
+        </tr>
+        @foreach (var eve in ViewBag.Events)
+        {
+            <tr>
+                <td>@eve.Id</td>
+                <td>@eve.Name</td>
+                <td>@eve.TicketPrice</td>
+                <td>@eve.EventDate</td>
+                <td>@eve.Address</td>
+                <td>@eve.City</td>
+                <td>@eve.VenueCapacity</td>
+                <td>@Html.ActionLink("Edit", "Edit", "Events", new { id = eve.Id }) |</td>
+            </tr>
+        }
+    </table>
+
+    <br />
+    <h3>Purchase History</h3>
+
+    <table class="table">
+        <tr>
+            <td>User ID</td>
+            <td>Event ID</td>
+            <td>Purchase Date</td>
+            <td>Quantity</td>
+        </tr>
+
+        @foreach (var pur in ViewBag.Purchases)
+        {
+            <tr>
+                <td>
+                    @pur.UserId
+                </td>
+                <td>
+                    @pur.EventId
+                </td>
+                <td>
+                    @pur.PurchaseDate
+                </td>
+                <td>
+                    @pur.Quantity
+                </td>
+            </tr>
+        }
+    </table>
+}
+
+
+
+

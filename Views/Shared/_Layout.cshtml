@@ -20,6 +20,10 @@
         .loginTable td {
             margin-right: 2em;
         }
+
+        a:hover {
+            opacity: 0.7;
+        }
     </style>
 </head>
 <body >
@@ -36,18 +40,12 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav" style="margin-left: 4em;">
-                    
-                    <style>
-                        a:hover {
-                            opacity: 0.7;
-                        }
-                    </style>
 
                     <li>@Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link active", @style = "color: white; font-weight: 600;" })</li>
                     <li>@Html.ActionLink("Event", "Index", "Events", null, new { @class = "nav-link ", @style = "color: white; font-weight: 600;" })</li>
                     <li>@Html.ActionLink("Register", "Create", "Users", null, new { @class = "nav-link ", @style = "color: white; font-weight: 600;" })</li>
 
-                    <li style="margin-right: auto;">@Html.ActionLink("Admin", "Index", "Users", null, new { @class = "nav-link ", @style = "color: white; font-weight: 600;" })</li>
+                    <li style="margin-right: auto;">@Html.ActionLink("Admin", "Admin", "Users", null, new { @class = "nav-link ", @style = "color: white; font-weight: 600;" })</li>
                     <li>
                         <div style=" display: flex;  height: 100%; width: 100%; padding-right: 4em;">
                             <a href="@Url.Action("Profile", "Users")" title="Profile Page" class="links">

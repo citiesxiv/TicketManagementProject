@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,7 +11,7 @@ namespace TicketManagementProject.Controllers
 {
     public class UsersController : Controller
     {
-        private MainDBEntities db = new MainDBEntities();
+        MainDBEntities db = new MainDBEntities();
         // GET: Users
         public ActionResult Index()
         {
@@ -121,6 +122,13 @@ namespace TicketManagementProject.Controllers
         // GET: Users/Edit/5
         public ActionResult Edit(int id)
         {
+            var user = db.Users.Single(u => u.Id == id);
+            ViewBag.UserName = user.Name;
+            ViewBag.UserPhone = user.PhoneNumber;
+            ViewBag.UserEmail = user.Email;
+            ViewBag.UserAddress = user.Address;
+            ViewBag.UserType = user.UserType;
+            ViewBag.UserPW = user.Password;
             return View();
         }
 
@@ -130,12 +138,11 @@ namespace TicketManagementProject.Controllers
         {
             try
             {
-                // TODO: Add update logic hereI'm
                 MainDBEntities dbEntities = new MainDBEntities();
                 dbEntities.Entry(events).State = System.Data.Entity.EntityState.Modified;
                 dbEntities.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             catch
             {
@@ -159,7 +166,7 @@ namespace TicketManagementProject.Controllers
             {
                 // TODO: Add delete logic here
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             catch
             {
@@ -180,9 +187,22 @@ namespace TicketManagementProject.Controllers
                
             return RedirectToAction("Login");
         }
-        
 
-            
-        
+        public ActionResult Admin()
+        {
+            var users = db.Users.ToList();
+            ViewBag.Events = db.Events.ToList();
+            ViewBag.Purchases = db.Purchases.ToList();
+            if(Session["userType"] == null)
+            {
+                ViewBag.SessionType = "NA";
+            }else
+            {
+                ViewBag.SessionType = Session["userType"].ToString();
+            }
+
+            return View(users);
+        }
+
     }
 }

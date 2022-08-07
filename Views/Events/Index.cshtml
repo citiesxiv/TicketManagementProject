@@ -51,7 +51,7 @@
                     <br />
                     <br />
 
-                    @if (Session["isHost"].Equals(1))
+                    @if (Session["userType"].ToString() != "General")
                     {
                         <div>
                             @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
@@ -63,7 +63,7 @@
             </div>
         }
 
-        @if (Session["isHost"].Equals(1))
+        @if (Session["userType"].ToString() != "General")
         {
             <div class="card"
                  style="width: 30rem;

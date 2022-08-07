@@ -66,6 +66,14 @@
 <br />
 
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @if (Session["userType"].ToString() != "General")
+    {
+    <span>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    </span>
+    }
+    else
+    {
+    }
     @Html.ActionLink("Back to List", "Index")
 </p>
