@@ -189,8 +189,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\ASP_LOGO_NOBG.png" />
     <Content Include="Images\pfp.png" />
-    <Content Include="Images\ASP-Logo-bgRemoved.png" />
     <Content Include="Images\ASP_LOGO.png" />
     <Content Include="Models\Users.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

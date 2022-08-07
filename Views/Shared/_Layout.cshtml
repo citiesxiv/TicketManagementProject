@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Ticket Management System</title>
 
-    <link rel="icon" type="image/x-icon" href="~/Images/ASP-Logo-bgRemoved.png">
+    <link rel="icon" type="image/x-icon" href="~/Images/ASP_LOGO_NOBG.png">
 
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -23,11 +23,11 @@
     </style>
 </head>
 <body >
-
+   
     <nav class="navbar navbar-expand-lg bg-dark" style="background: #2D3047 !important; position: absolute; top: 0; width: 100%; margin-bottom: 2em;">
         <div class="container-fluid">
             <a class="navbar-brand" href="/Home" style="display: flex;  align-content: center; width: 20%; text-decoration: none; color: white; margin-left: 3em;">
-                <img src="~/Images/ASP-Logo-bgRemoved.png" width="20%" />
+                <img src="~/Images/ASP_LOGO_NOBG.png" width="20%" />
 
                 <h2 style="font-weight: 900; color: white;">Ticket Boss</h2>
             </a>
@@ -92,7 +92,7 @@
                 <li>@Html.ActionLink("Home", "Index", "Home")</li>
                 <li>@Html.ActionLink("Event", "Index", "Events")</li>
                 <li>@Html.ActionLink("Register", "Create", "Users")</li>
-                <li>@Html.ActionLink("Admin", "Admin", "Home")</li>
+                <li>@Html.ActionLink("Admin", "Index", "Users")</li>
             </ul>
         </div>
 
