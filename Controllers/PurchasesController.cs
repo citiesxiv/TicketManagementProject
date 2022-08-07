@@ -24,14 +24,14 @@ namespace TicketManagementProject.Controllers
                 try
                 {
                     var purchaseRecord = from p in purchases
-                                   join e in events on p.EventId equals e.Id into table1
-                                   from e in table1.ToList()
-                                   where p.UserId == userId
-                                   select new PurchaseViewModel
-                                   {
-                                       events = e,
-                                       purchase = p
-                                   };
+                                         join e in events on p.EventId equals e.Id into table1
+                                         from e in table1.ToList()
+                                         where p.UserId == userId
+                                         select new PurchaseViewModel
+                                         {
+                                             events = e,
+                                             purchase = p
+                                         };
 
                     return PartialView(purchaseRecord);
                 }
@@ -42,5 +42,7 @@ namespace TicketManagementProject.Controllers
 
             }
         }
-        }
+    }
+
+    
 }

@@ -11,13 +11,16 @@ namespace TicketManagementProject.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Purchase
     {
         public int Id { get; set; }
         public int UserId { get; set; }
         public int EventId { get; set; }
         public System.DateTime PurchaseDate { get; set; }
+
+        [Required, RegularExpression(@"^\d+$", ErrorMessage = "Only positive integer is accepted"),]
         public int Quantity { get; set; }
     
         public virtual Event Event { get; set; }

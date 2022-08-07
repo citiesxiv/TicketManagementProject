@@ -11,7 +11,8 @@ namespace TicketManagementProject.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,10 +22,15 @@ namespace TicketManagementProject.Models
         }
     
         public int Id { get; set; }
+        [Required]
         public string Name { get; set; }
         public string PhoneNumber { get; set; }
+        [Required]
         public string Email { get; set; }
+        [Required]
         public string Address { get; set; }
+
+        [Required, RegularExpression(@"^(?=[^\d_].*?\d)\w(\w|[!@#$%]){7,50}", ErrorMessage = "Password must be 7-50characters.\nPassword can contain special characters(!@#$%). Password must start with a letter. \n " + "Password must contain 1 number."),]
         public string Password { get; set; }
         public string UserType { get; set; }
     
