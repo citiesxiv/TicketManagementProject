@@ -22,71 +22,130 @@
         }
     </style>
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #2D3047; color: white !important; margin-bottom: 2em !important;">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+<body >
+    @* <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #2D3047; color: white !important; margin-bottom: 2em !important;">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
 
-                
-                <div style="display: flex;">
-                    <div style="width: 5em;">
-                        <a href="/Home">
-                            <img src="~/Images/ASP-Logo-bgRemoved.png" style="width: 100%;"/>
-                        </a>
-                    </div>
-                    <div style="font-weight: 600;">
-                        @Html.ActionLink("TicketBoss", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                    </div>
-                </div>
 
-            </div>
-            <div class="navbar-collapse collapse" ">
-                <ul class="nav navbar-nav" >
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Event", "Index", "Events")</li>
-                    <li>@Html.ActionLink("Register", "Create", "Users")</li>
-
-                    <li style="margin-right: auto;">@Html.ActionLink("Admin", "Index", "Users")</li>
-                    <li>
-                        <div style="margin-right: 1em; display: flex;  height: 100%">
-                            <a href="@Url.Action("Profile", "Users")" title="Profile Page" class="links">
-                                <img alt="Profile" src="@Url.Content("~/Images/pfp.png")" style="width: 3em; margin-left: 30em; margin-top: 1em;"/>
+                    <div style="display: flex;">
+                        <div style="width: 5em;">
+                            <a href="/Home">
+                                <img src="~/Images/ASP-Logo-bgRemoved.png" style="width: 100%;" />
                             </a>
+                        </div>
+                        <div style="font-weight: 600;">
+                            @Html.ActionLink("TicketBoss", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                        </div>
+                    </div>
 
-                            <div>
-                                @if (Session["id"] != null)
+                </div>
+                <div class="navbar-collapse collapse" ">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Event", "Index", "Events")</li>
+                        <li>@Html.ActionLink("Register", "Create", "Users")</li>
+
+                        <li style="margin-right: auto;">@Html.ActionLink("Admin", "Index", "Users")</li>
+                        <li>
+                            <div style="margin-right: 1em; display: flex;  height: 100%">
+                                <a href="@Url.Action("Profile", "Users")" title="Profile Page" class="links">
+                                    <img alt="Profile" src="@Url.Content("~/Images/pfp.png")" style="width: 3em; margin-left: 30em; margin-top: 1em;" />
+                                </a>
+
+                                <div>
+                                    @if (Session["id"] != null)
                                     {
                                         <div style="position: relative;  margin-left: 1em; color: white; ">
                                             <h2 style="font-size: 15px; font-weight: 700; margin-bottom: -0.1em;">@Session["name"]</h2>
                                             @Html.ActionLink("Logout", "Logout", "Users", null, new { @style = "color: white;" })
                                         </div>
                                     }
-                                else
+                                    else
                                     {
                                         <div style="position: relative; top: 20px;  margin-left: 1em; color: white; font-weight: 700;">
                                             @Html.ActionLink("Login", "Login", "Users", null, new { @style = "color: white;" })
                                         </div>
                                     }
+                                </div>
+
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    *@
+
+
+    <nav class="navbar navbar-expand-lg bg-dark" style="background: #2D3047 !important; position: absolute; top: 0; width: 100%; margin-bottom: 2em;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/Home" style="display: flex;  align-content: center; width: 20%; text-decoration: none; color: white; margin-left: 3em;">
+                <img src="~/Images/ASP-Logo-bgRemoved.png" width="20%" />
+
+                <h2 style="font-weight: 900; color: white;">Ticket Boss</h2>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav" style="margin-left: 4em;">
+                    
+                    <style>
+                        a:hover {
+                            opacity: 0.7;
+                        }
+                    </style>
+
+                    <li>@Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link active", @style = "color: white; font-weight: 600;" })</li>
+                    <li>@Html.ActionLink("Event", "Index", "Events", null, new { @class = "nav-link ", @style = "color: white; font-weight: 600;" })</li>
+                    <li>@Html.ActionLink("Register", "Create", "Users", null, new { @class = "nav-link ", @style = "color: white; font-weight: 600;" })</li>
+
+                    <li style="margin-right: auto;">@Html.ActionLink("Admin", "Index", "Users", null, new { @class = "nav-link ", @style = "color: white; font-weight: 600;" })</li>
+                    <li>
+                        <div style=" display: flex;  height: 100%; width: 100%; padding-right: 4em;">
+                            <a href="@Url.Action("Profile", "Users")" title="Profile Page" class="links">
+                                <img alt="Profile" src="@Url.Content("~/Images/pfp.png")" style="width: 3em; margin-left: 20em; " />
+                            </a>
+
+                            <div>
+                                @if (Session["id"] != null)
+                                {
+                                    <div style="position: relative; margin-left: 1em; color: white; width: 20em; margin-right: 2em;">
+                                        <a href="@Url.Action("Profile", "Users")" title="Profile Page" class="links" style="text-decoration: none; color: white;">
+                                            <h2 style="font-size: 15px; font-weight: 700; margin-bottom: -0.1em; margin-top: 0.3em;">@Session["name"]</h2>
+                                        </a>
+
+                                        @Html.ActionLink("Logout", "Logout", "Users", null, new { @style = "color: white;" })
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div style="position: relative; top: 10px;  margin-left: 1em; color: white; font-weight: 700;">
+                                        @Html.ActionLink("Login", "Login", "Users", null, new { @style = "color: white;" })
+                                    </div>
+                                }
                             </div>
 
                         </div>
                     </li>
-
                 </ul>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
+    </nav>
+
+    <div class="container body-content" style="margin-bottom: auto; margin-top: 3em;">
         @RenderBody()
-        <hr />
+
 
     </div>
-    <footer style="background: #2D3047; color: white; padding: 3em 5em; margin-bottom: -10em;  width: 100%; display: flex; justify-content: space-between;">
+    <footer style="background: #2D3047; color: white; padding: 3em 5em; margin-top: 5em; margin-bottom: -10em;  width: 100%; display: flex; justify-content: space-between;">
 
         <div>
             <ul style="list-style: none;">
@@ -102,13 +161,13 @@
             <p>Chanju Kang</p>
             <p>Lucky Osunbiyi</p>
         </div>
-        
+
         <div>
             <p>&copy; @DateTime.Now.Year - TicketBoss</p>
         </div>
     </footer>
 
-    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

@@ -2,22 +2,35 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
+<div class="mt-4 p-5 bg-primary text-white rounded" style="margin-bottom: 2em; overflow:  hidden; display: flex; align-items: center; justify-content: space-between; height: 60vh;">
 
-    @if (Session["id"] != null)
-    {
-        <h1 style="font-weight: 900; margin-bottom: 1em">Welcome back, @Session["name"]</h1>
-    } else
-            {
-    <h1 style="font-weight: 900;">Welcome to TicketBoss!</h1>
-            }
+    <div style="height: 100%; margin-top: 4em;">
 
-    <p>
-        Looking for a place to spend time? <br />
-        Check out all events happening right now (or soon)! <br /><br />
+        @if (Session["id"] != null)
+        {
+            <h1 style="font-weight: 900; margin-bottom: 1em">Welcome back, @Session["name"]</h1>
+        }
+        else
+        {
+            <h1 style="font-weight: 900; font-size: 3em; margin-bottom: 0.5em;">Welcome to<br />TicketBoss!</h1>
+        }
 
-        @Html.ActionLink("Event", "Index", "Events")
-    </p>
+
+
+
+
+
+        <p>
+            Looking for a place to spend time? <br />
+            Check out all events happening right now (or soon)! <br /><br />
+
+            @Html.ActionLink("Event", "Index", "Events")
+        </p>
+
+    </div>
+
+    <img src="~/Images/ASP-Logo-bgRemoved.png" style="width: 40%;"/>
+
 </div>
 
 <div class="row">
