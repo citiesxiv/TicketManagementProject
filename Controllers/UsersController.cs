@@ -113,7 +113,7 @@ namespace TicketManagementProject.Controllers
         public ActionResult Logout()
         {
             Session.Abandon();
-            return RedirectToAction("Index", "Home");
+            return View();
         }
            
         
@@ -180,8 +180,6 @@ namespace TicketManagementProject.Controllers
                
             return RedirectToAction("Login");
         }
-
-
         
 
             
