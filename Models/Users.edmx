@@ -38,7 +38,7 @@
           <Property Name="PhoneNumber" Type="char" MaxLength="10" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Address" Type="nvarchar" MaxLength="60" />
-          <Property Name="isHost" Type="bit" Nullable="false" />
+          <Property Name="UserType" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <Association Name="FK_Purchase_EventID_Events_ID">
@@ -118,9 +118,9 @@
           <Property Name="PhoneNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Address" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
-          <Property Name="isHost" Type="Boolean" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Purchases" Relationship="Self.FK_Purchase_UserID_Users_ID" FromRole="Users" ToRole="Purchases" />
+          <Property Name="UserType" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_Purchase_EventID_Events_ID">
           <End Role="Events" Type="Self.Event" Multiplicity="1" />
@@ -194,12 +194,12 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="MainDBModel.User">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="isHost" ColumnName="isHost" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
               </MappingFragment>
             </EntityTypeMapping>

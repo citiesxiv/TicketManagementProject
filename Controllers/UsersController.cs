@@ -55,7 +55,7 @@ namespace TicketManagementProject.Controllers
                     Session["name"] = user.Name;
                     Session["email"] = user.Email;
                     Session["address"] = user.Address;
-                    Session["isHost"] = user.isHost;
+                    Session["userType"] = user.UserType;
                     Session["phoneNumber"] = user.PhoneNumber;
 
                     return RedirectToAction("Index","Home");
@@ -94,7 +94,7 @@ namespace TicketManagementProject.Controllers
                     Session["name"] = user.Name;
                     Session["email"] = user.Email;
                     Session["address"] = user.Address;
-                    Session["isHost"] = user.isHost;
+                    Session["userType"] = user.UserType;
                     Session["phoneNumber"] = user.PhoneNumber;
                     return RedirectToAction("Index", "Home");
                 

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Ticket Management System</title>
 
-    <link rel="icon" type="image/x-icon" href="~/Images/ASP-Logo-bgRemoved.png">
+    <link rel="icon" type="image/x-icon" href="~/Images/ASP_LOGO_NOBG.png">
 
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -23,71 +23,11 @@
     </style>
 </head>
 <body >
-    @* <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #2D3047; color: white !important; margin-bottom: 2em !important;">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-
-                    <div style="display: flex;">
-                        <div style="width: 5em;">
-                            <a href="/Home">
-                                <img src="~/Images/ASP-Logo-bgRemoved.png" style="width: 100%;" />
-                            </a>
-                        </div>
-                        <div style="font-weight: 600;">
-                            @Html.ActionLink("TicketBoss", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                        </div>
-                    </div>
-
-                </div>
-                <div class="navbar-collapse collapse" ">
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("Event", "Index", "Events")</li>
-                        <li>@Html.ActionLink("Register", "Create", "Users")</li>
-
-                        <li style="margin-right: auto;">@Html.ActionLink("Admin", "Index", "Users")</li>
-                        <li>
-                            <div style="margin-right: 1em; display: flex;  height: 100%">
-                                <a href="@Url.Action("Profile", "Users")" title="Profile Page" class="links">
-                                    <img alt="Profile" src="@Url.Content("~/Images/pfp.png")" style="width: 3em; margin-left: 30em; margin-top: 1em;" />
-                                </a>
-
-                                <div>
-                                    @if (Session["id"] != null)
-                                    {
-                                        <div style="position: relative;  margin-left: 1em; color: white; ">
-                                            <h2 style="font-size: 15px; font-weight: 700; margin-bottom: -0.1em;">@Session["name"]</h2>
-                                            @Html.ActionLink("Logout", "Logout", "Users", null, new { @style = "color: white;" })
-                                        </div>
-                                    }
-                                    else
-                                    {
-                                        <div style="position: relative; top: 20px;  margin-left: 1em; color: white; font-weight: 700;">
-                                            @Html.ActionLink("Login", "Login", "Users", null, new { @style = "color: white;" })
-                                        </div>
-                                    }
-                                </div>
-
-                            </div>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-        </div>
-    *@
-
-
+   
     <nav class="navbar navbar-expand-lg bg-dark" style="background: #2D3047 !important; position: absolute; top: 0; width: 100%; margin-bottom: 2em;">
         <div class="container-fluid">
             <a class="navbar-brand" href="/Home" style="display: flex;  align-content: center; width: 20%; text-decoration: none; color: white; margin-left: 3em;">
-                <img src="~/Images/ASP-Logo-bgRemoved.png" width="20%" />
+                <img src="~/Images/ASP_LOGO_NOBG.png" width="20%" />
 
                 <h2 style="font-weight: 900; color: white;">Ticket Boss</h2>
             </a>
