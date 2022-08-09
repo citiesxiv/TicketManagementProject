@@ -5,10 +5,21 @@
 
 <h2>Login</h2>
 
+
+
 <div style="width: 100%; height: 70vh; display: flex; justify-content: center; align-content:center;">
     <div>
+        <p class="text-danger">
+
+            @{
+                if (ViewBag.error != null)
+                {
+                    @ViewBag.error
+                }
+            }
+        </p>
         <form action="Login" method="POST" style="margin-bottom: 2em; margin-left: 1em;">
-            
+
             <table width="100%" class="loginTable">
                 <tr>
                     <td>
@@ -16,7 +27,7 @@
                     </td>
                     <td>
                         <input style="border-radius: 0.5em; border: 1px solid #ccc; padding: 0.7em; margin-left: 1em;"
-                               type="text" name="email" placeholder="Please enter email" required />
+                               type="text" name="email" placeholder="Please enter email" required/>
                     </td>
                 </tr>
                 <tr>
@@ -25,13 +36,13 @@
                     </td>
                     <td>
                         <input style="border-radius: 0.5em; border: 1px solid #ccc; padding: 0.7em; margin-left: 1em;"
-                               type="password" name="password" placeholder="Please enter password" required />
+                               type="password" name="password" placeholder="Please enter password" required/>
                     </td>
                 </tr>
 
             </table>
 
-            <input type="submit" class="btn btn-primary" value="Login" style="border: none;  color: white; padding: 0.7em 2em; border-radius: 0.5em; margin-top: 1em; width: 100%;" />
+            <input type="submit" class="btn btn-primary" value="Login" style="border: none; color: white; padding: 0.7em 2em; border-radius: 0.5em; margin-top: 1em; width: 100%;"/>
         </form>
 
         @Html.ActionLink("Register new Account", "Create", null, new { @style = "text-align: center; margin-left: 1.2em;" })
