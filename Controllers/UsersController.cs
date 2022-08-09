@@ -64,7 +64,7 @@ namespace TicketManagementProject.Controllers
                 else
                 {
                     ViewBag.error = "Please Leave no fields blank.";
-                    return RedirectToAction("Create");
+                    return View(user);
                 }
 
                
@@ -103,6 +103,7 @@ namespace TicketManagementProject.Controllers
 
             } catch
             {
+                ViewBag.error = "User was not found";
                 return View("Login");
             }
 
