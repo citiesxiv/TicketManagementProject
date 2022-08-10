@@ -11,6 +11,9 @@
     <h4>User</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dd>
+            @Html.Hidden("userID", new {@Value = ViewBag.Id })
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
@@ -51,22 +54,14 @@
             @Html.DisplayFor(model => model.UserType)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>
-
     </dl>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Delete" class="btn btn-primary" /> |
+            @Html.ActionLink("Back to List", "Admin")
         </div>
     }
 </div>
