@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Dynamic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TicketManagementProject.Models;
@@ -66,7 +68,6 @@ namespace TicketManagementProject.Controllers
                     ViewBag.error = "Please Leave no fields blank.";
                     return View(user);
                 }
-
                
         }
            
@@ -118,61 +119,57 @@ namespace TicketManagementProject.Controllers
             return View();
         }
            
-        
-
+       
         // GET: Users/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             var user = db.Users.Single(u => u.Id == id);
+            ViewBag.UserID = user.Id;
             ViewBag.UserName = user.Name;
             ViewBag.UserPhone = user.PhoneNumber;
             ViewBag.UserEmail = user.Email;
             ViewBag.UserAddress = user.Address;
             ViewBag.UserType = user.UserType;
             ViewBag.UserPW = user.Password;
-            return View();
+            return View(user);
         }
 
         // POST: Users/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, Event events)
+        public ActionResult Edit(User user)
         {
-            try
-            {
-                MainDBEntities dbEntities = new MainDBEntities();
-                dbEntities.Entry(events).State = System.Data.Entity.EntityState.Modified;
-                dbEntities.SaveChanges();
+            db.Entry(user).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Admin");
 
-                return RedirectToAction("Index", "Home");
-            }
-            catch
-            {
-                return View();
-            }
         }
-
-
 
         // GET: Users/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var user = db.Users.Single(u => u.Id == id);
+            ViewBag.Id = user.Id;
+            return View(user);
         }
 
         // POST: Users/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
         {
-            try
+            User user = db.Users.Single(u => u.Id == id);
+            var purchases = db.Purchases.Where(r => r.UserId == id).ToList();
+            db.Users.Remove(user);
+            foreach(var p in purchases)
             {
-                // TODO: Add delete logic here
+                db.Purchases.Remove(p);
 
-                return RedirectToAction("Index", "Home");
             }
-            catch
-            {
-                return View();
-            }
+            db.SaveChanges();
+            return RedirectToAction("Admin");
         }
 
         // Get User's Profile
