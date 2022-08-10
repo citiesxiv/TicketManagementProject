@@ -47,29 +47,13 @@
 
     <table class="table" id="userList">
         <tr>
-
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhoneNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserType)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id })
-                |@Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>User Type</th>
+            <th>Actions</th>
         </tr>
 
         @foreach (var item in Model)
