@@ -4,155 +4,187 @@
     ViewBag.Title = "Admin";
 }
 
-<h2>Admin</h2>
-<br />
-<hr />
-<br />
 
-<h3>Users</h3>
+<style>
 
-<input type="text" id="searchUser" onkeyup="searchUser()" placeholder="Search for User name" style="border: 1px solid #ddd;">
-<br />
-
-<table class="table" id="userList">
-    <tr>
-        <td>ID</td>
-        <td>Name</td>
-        <td>Phone</td>
-        <td>Email</td>
-        <td>Address</td>
-        <td>Type</td>
-        <td>Actions</td>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhoneNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserType)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
-        </tr>
+    .admin input {
+        border: 1px solid #ddd;
+        padding: 1em;
+        margin: 1em auto;
+        width: 100%;
+        border-radius: 1em;
+        transition: 0.5s ease-in-out;
     }
-</table>
 
-<script>
-    function searchUser() {
-        var input, filter, tbl, tr, td, i, txtValue;
-        input = document.getElementById('searchUser');
-        filter = input.value.toUpperCase();
-        tbl = document.getElementById("userList");
-        tr = tbl.getElementsByTagName('tr');
+        .admin input:hover {
+            //box-shadow: 0 0px 40px rgba( 66, 133, 244, 0.2 );
+            border: 1px solid rgb(66, 133, 244);
 
-        for (i = 1; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[1];
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-            } else {
-                tr[i].style.display = "none";
+        }
+
+    .admin h3 {
+        font-weight: 800;
+        color: #4285F4;
+        margin-top: 2em;
+    }
+
+    .admin td {
+        padding: 1em 0.5em;
+    }
+
+</style>
+
+
+<div class="admin">
+
+
+    <h2 style="font-weight: 900; color: #4285F4; font-size: 5em; margin-bottom: .5em;">Admin Dashboard</h2>
+
+    <h3 style="">Users</h3>
+
+    <input type="text" id="searchUser" onkeyup="searchUser()" placeholder="Search for User name" style=" ">
+    <br />
+
+    <table class="table" id="userList">
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Phone</td>
+            <td>Email</td>
+            <td>Address</td>
+            <td>Type</td>
+            <td>Actions</td>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserType)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </table>
+
+    <script>
+        function searchUser() {
+            var input, filter, tbl, tr, td, i, txtValue;
+            input = document.getElementById('searchUser');
+            filter = input.value.toUpperCase();
+            tbl = document.getElementById("userList");
+            tr = tbl.getElementsByTagName('tr');
+
+            for (i = 1; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[1];
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
             }
         }
-    }
-</script>
-<br />
+    </script>
+    <br />
 
-<h3>Event List</h3>
-<input type="text" id="searchEvent" onkeyup="searchEvent()" placeholder="Search for event name" style="border: 1px solid #ddd;">
-<br />
-<table class="table" id="eventList">
-    <tr>
-        <td>ID</td>
-        <td>Name</td>
-        <td>Ticket Price</td>
-        <td>Event Date</td>
-        <td>Address</td>
-        <td>City</td>
-        <td>Venue Capacity</td>
-        <td>Action</td>
-    </tr>
-    @foreach (var eve in ViewBag.Events)
-    {
+    <h3>Event List</h3>
+    <input type="text" id="searchEvent" onkeyup="searchEvent()" placeholder="Search for event name" style="border: 1px solid #ddd;">
+    <br />
+    <table class="table" id="eventList">
         <tr>
-            <td>@eve.Id</td>
-            <td>@eve.Name</td>
-            <td>@eve.TicketPrice</td>
-            <td>@eve.EventDate</td>
-            <td>@eve.Address</td>
-            <td>@eve.City</td>
-            <td>@eve.VenueCapacity</td>
-            <td>@Html.ActionLink("Edit", "Edit", "Events", new { id = eve.Id }) </td>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Ticket Price</td>
+            <td>Event Date</td>
+            <td>Address</td>
+            <td>City</td>
+            <td>Venue Capacity</td>
+            <td>Action</td>
         </tr>
-    }
-</table>
+        @foreach (var eve in ViewBag.Events)
+        {
+            <tr>
+                <td>@eve.Id</td>
+                <td>@eve.Name</td>
+                <td>@eve.TicketPrice</td>
+                <td>@eve.EventDate</td>
+                <td>@eve.Address</td>
+                <td>@eve.City</td>
+                <td>@eve.VenueCapacity</td>
+                <td>@Html.ActionLink("Edit", "Edit", "Events", new { id = eve.Id }) </td>
+            </tr>
+        }
+    </table>
 
-<script>
-    function searchEvent() {
-        var input, filter, tbl, tr, td, i, txtValue;
-        input = document.getElementById('searchEvent');
-        filter = input.value.toUpperCase();
-        tbl = document.getElementById("eventList");
-        tr = tbl.getElementsByTagName('tr');
+    <script>
+        function searchEvent() {
+            var input, filter, tbl, tr, td, i, txtValue;
+            input = document.getElementById('searchEvent');
+            filter = input.value.toUpperCase();
+            tbl = document.getElementById("eventList");
+            tr = tbl.getElementsByTagName('tr');
 
-        for (i = 1; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[1];
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-            } else {
-                tr[i].style.display = "none";
+            for (i = 1; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[1];
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
             }
         }
-    }
-</script>
-<br />
-<h3>Purchase History</h3>
+    </script>
+    <br />
+    <h3>Purchase History</h3>
 
-<table class="table">
-    <tr>
-        <td>User ID</td>
-        <td>Event ID</td>
-        <td>Purchase Date</td>
-        <td>Quantity</td>
-    </tr>
-
-    @foreach (var pur in ViewBag.Purchases)
-    {
+    <table class="table">
         <tr>
-            <td>
-                @pur.UserId
-            </td>
-            <td>
-                @pur.EventId
-            </td>
-            <td>
-                @pur.PurchaseDate
-            </td>
-            <td>
-                @pur.Quantity
-            </td>
+            <td>User ID</td>
+            <td>Event ID</td>
+            <td>Purchase Date</td>
+            <td>Quantity</td>
         </tr>
-    }
-</table>
 
+        @foreach (var pur in ViewBag.Purchases)
+        {
+            <tr>
+                <td>
+                    @pur.UserId
+                </td>
+                <td>
+                    @pur.EventId
+                </td>
+                <td>
+                    @pur.PurchaseDate
+                </td>
+                <td>
+                    @pur.Quantity
+                </td>
+            </tr>
+        }
+    </table>
+
+</div>
 
 
 
